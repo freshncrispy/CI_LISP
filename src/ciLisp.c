@@ -62,6 +62,7 @@ AST_NODE *createNumberNode(double value, NUM_TYPE type)
         yyerror("Memory allocation failed!");
 
     // TODO set the AST_NODE's type, assign values to contained NUM_AST_NODE
+    // populating a node.  yeah.
 
     return node;
 }
@@ -134,6 +135,9 @@ RET_VAL eval(AST_NODE *node)
     // Use the results of those calls to populate result.
     switch (node->type)
     {
+        case FUNC_NODE_TYPE:
+            result = evalFuncNode(&node->data.function);
+            break;
         default:
             yyerror("Invalid AST_NODE_TYPE, probably invalid writes somewhere!");
     }

@@ -52,7 +52,7 @@ OPER_TYPE resolveFunc(char *);
 typedef enum {
     NUM_NODE_TYPE,
     FUNC_NODE_TYPE
-} AST_NODE_TYPE;
+} AST_NODE_TYPE;             // AST: abstract syntax tree node
 
 // Types of numeric values
 typedef enum {
@@ -67,7 +67,7 @@ typedef struct {
         double dval;
         long ival;
     } value;
-} NUM_AST_NODE;
+} NUM_AST_NODE;          // AST: abstract syntax tree node
 
 // Values returned by eval function will be numbers with a type.
 // They have the same structure as a NUM_AST_NODE.
@@ -76,11 +76,11 @@ typedef NUM_AST_NODE RET_VAL;
 
 // Node to store a function call with its inputs
 typedef struct {
-    OPER_TYPE oper;
+    OPER_TYPE oper;     // OPER AND FUNC are basically interchangable
     char* ident; // only needed for custom functions
     struct ast_node *op1;
     struct ast_node *op2;
-} FUNC_AST_NODE;
+} FUNC_AST_NODE;             // AST: abstract syntax tree node
 
 // Generic Abstract Syntax Tree node. Stores the type of node,
 // and reference to the corresponding specific node (initially a number or function call).
@@ -90,7 +90,7 @@ typedef struct ast_node {
         NUM_AST_NODE number;
         FUNC_AST_NODE function;
     } data;
-} AST_NODE;
+} AST_NODE;                  // AST: abstract syntax tree node
 
 AST_NODE *createNumberNode(double value, NUM_TYPE type);
 
